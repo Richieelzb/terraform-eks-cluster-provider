@@ -19,5 +19,17 @@ terraform {
 }
 
 provider "aws" {
- // region = var.aws-region
+  region = var.aws-region
+}
+
+resource "null_resource" "kubeconfig" {
+  depends_on = [module.eks]
+
+  provisioner "local-exec" {
+    command = <<EOT
+  aws eks update-kubeconfig \
+  --region us-east-1 \
+  --name my-eks-cluster
+EOT
+  }
 }
