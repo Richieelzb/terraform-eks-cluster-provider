@@ -6,13 +6,13 @@ terraform {
     }
     kubernetes = {
       source = "hashicorp/kubernetes"
-      version = "~>2.38"
+      version = "3.0.1"
     }
   }
 
   backend "s3" {
     bucket       = "terraform-bucket-lzb-001"
-    key          = "kubernetes/terraform.tfstate"
+    key          = "kubernetes-provider/terraform.tfstate"
     region       = "ap-south-1"
     #use_lockfile = true
   }
