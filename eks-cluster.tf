@@ -15,9 +15,9 @@ module "eks" {
 
 
   # Disable Launch Template for all node groups (module defaults)
-  eks_managed_node_group_defaults = {
-    create_launch_template = false
-  }
+  # eks_managed_node_group_defaults = {
+  #   create_launch_template = false
+  # }
 
   eks_managed_node_groups = {
     private_nodes = {
