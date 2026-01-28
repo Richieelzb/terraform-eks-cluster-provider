@@ -4,13 +4,13 @@ resource "aws_instance" "bastion-ec2" {
   subnet_id                   = module.vpc.public_subnets[0]
   associate_public_ip_address = true
   key_name                    = data.aws_key_pair.existing-key.key_name
-
+  user_data                   = file("${path.module}/kubectl-install.sh")
   # Concatenate two local files into a single user_data string
-  user_data = <<-EOF
+  /*user_data = <<-EOF
     ${file("${path.module}/aws-install.sh")}
     ${file("${path.module}/kubectl-install.sh")}
     EOF
-
+   */
   iam_instance_profile   = aws_iam_instance_profile.bastion_profile.name
   vpc_security_group_ids = [aws_security_group.bastion_sg.id]
 

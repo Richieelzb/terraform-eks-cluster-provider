@@ -22,7 +22,7 @@ provider "aws" {
   region = var.aws-region
 }
 
-resource "null_resource" "kubeconfig" {
+/*resource "null_resource" "kubeconfig" {
   depends_on = [module.eks]
 
   provisioner "local-exec" {
@@ -32,4 +32,4 @@ resource "null_resource" "kubeconfig" {
   --name my-eks-cluster
 EOT
   }
-}
+}*/

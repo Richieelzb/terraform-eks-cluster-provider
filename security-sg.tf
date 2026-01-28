@@ -34,3 +34,14 @@ resource "aws_security_group_rule" "allow_bastion_to_nodes_ssh" {
   //security_group_id        = module.eks.node_security_group_id # requires EKS module output
   source_security_group_id = aws_security_group.bastion_sg.id
 }
+
+
+# OR allow HTTPS from a CIDR
+resource "aws_security_group_rule" "eks_https_from_cidr" {
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  security_group_id = module.eks.cluster_security_group_id
+  cidr_blocks       = ["0.0.0.0/0"]
+}
