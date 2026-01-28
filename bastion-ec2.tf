@@ -1,4 +1,4 @@
-/*resource "aws_instance" "bastion-ec2" {
+resource "aws_instance" "bastion-ec2" {
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = var.instance-type
   subnet_id                   = module.vpc.public_subnets[0]
@@ -9,4 +9,3 @@
 
   tags = { Name = "eks-bastion" }
 }
-*/
