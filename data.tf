@@ -8,3 +8,8 @@ data "aws_ami" "amazon_linux_2" {
     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 }
+
+
+data "aws_key_pair" "existing-key" {
+  key_name = "lupfumo-key-mumbai"
+}
