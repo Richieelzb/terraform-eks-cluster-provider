@@ -1,5 +1,5 @@
 
 resource "aws_key_pair" "eks_ssh" {
-  key_name   = "eks-ng-ssh"
-  public_key = file("~/.ssh/eks-ng-ssh.pub")
+  key_name   = "lupfumo-key-mumbai"                         # Name shown in EC2
+  public_key = file("${path.module}/lupfumo-key-mumbai.pem") # Reads from current module directory
 }
