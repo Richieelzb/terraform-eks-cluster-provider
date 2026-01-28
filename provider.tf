@@ -28,7 +28,7 @@ resource "null_resource" "kubeconfig" {
   provisioner "local-exec" {
     command = <<EOT
   aws eks update-kubeconfig \
-  --region us-east-1 \
+  --region ap-south-1 \
   --name my-eks-cluster
 EOT
   }
