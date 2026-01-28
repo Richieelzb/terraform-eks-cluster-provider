@@ -14,16 +14,25 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
 
 
+  # Give the bastion EC2 role cluster-admin access to EKS
   access_entries = {
     bastion-access = {
       principal_arn = aws_iam_role.bastion_role.arn
+
       policy_associations = {
-        cluster-admin = {
+        cluster_admin = {
+          # EKS managed cluster admin policy
           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+
+          # REQUIRED: scope for the association
+          access_scope = {
+            type = "cluster" # or "namespace" with namespaces = ["default", ...]
+          }
         }
       }
     }
   }
+
 
 
   # Disable Launch Template for all node groups (module defaults)
