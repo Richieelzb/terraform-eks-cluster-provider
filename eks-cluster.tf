@@ -12,13 +12,18 @@ module "eks" {
 
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
+  
+  
+# Disable Launch Template for all node groups (module defaults)
+  eks_managed_node_group_defaults = {
+    create_launch_template = false
+  }
 
   eks_managed_node_groups = {
     private_nodes = {
       desired_size = 2
       min_size     = 2
       max_size     = 3
-
       instance_types = ["t3.medium"]
       subnet_ids     = module.vpc.private_subnets
 
