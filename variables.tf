@@ -112,10 +112,10 @@ variable "aws-region" {
 
 variable "environment" {
   type    = string
-  default = "Development"
+  default = "dev"
 }
 
 variable "business-division" {
   type    = string
-  default = "IT"
+  default = "wallawalla"
 }
