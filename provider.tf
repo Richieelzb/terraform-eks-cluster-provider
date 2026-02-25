@@ -11,9 +11,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "terraform-bucket-lzb-001"
-    key    = "kubernetes-provider/terraform.tfstate"
-    region = "ap-south-1"
+    bucket       = "terraform-bucket-lzb-001"
+    key          = "kubernetes-provider/terraform.tfstate"
+    region       = "ap-south-1"
     use_lockfile = true
   }
 }
